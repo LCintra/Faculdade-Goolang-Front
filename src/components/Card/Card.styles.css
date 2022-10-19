@@ -1,0 +1,99 @@
+* {
+  transition-duration: 500ms;
+}
+
+.card-container {
+  background-color: white;
+  padding: 20px;
+  border-bottom: 2px solid rgb(222, 222, 228);
+  border-left: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container:hover {
+  border-left: 3px solid #50C1FD
+}
+
+.task-text {
+  font-size: 16px;
+  color: rgb(73, 68, 68);
+  text-align: justify;
+  margin-top:5px;
+}
+
+.date {
+  font-size:14px;
+  color:rgb(184, 184, 184)
+}
+
+.open-more {
+  color:rgb(73, 68, 68);
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.icon-selected {
+  color:#50C1FD
+}
+
+.card-unselected {
+  opacity: 0.2
+}
+
+.card-selected {
+  border-left: 3px solid #50C1FD
+}
+
+.invisible-icons-container {
+  display: none;
+  position: relative;
+}
+
+.invisible-icons {
+  position: absolute;
+}
+
+.icons-container-appear {
+  display: block;
+}
+
+.invisible-icons-container div {
+  color:#50C1FD;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  width:30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.invisible-icons-container div svg {
+  color:#50C1FD;
+  font-size:20px;
+}
+
+.invisible-icons-container div:nth-child(1) {
+  top: -40px;
+  cursor: pointer;
+  right: 65px;
+}
+
+.invisible-icons-container div:nth-child(2) {
+  left: -50px;
+  cursor: pointer;
+}
+
+.invisible-icons-container div:nth-child(3) {
+  bottom: -70px;
+  right: 65px;
+  cursor: pointer;
+}

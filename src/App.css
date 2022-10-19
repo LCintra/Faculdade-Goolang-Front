@@ -1,0 +1,131 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.interface {
+  background-color: white;
+  width: 500px;
+  margin-top:40px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.header {
+  background-image: linear-gradient(to right, #2DF2F7 , #50C1FD);
+  padding: 15px 0px 15px 40px;
+  position: relative;
+}
+
+h1 {
+  color: white;
+  font-weight: bold;
+}
+
+.header_img {
+  width: 150px;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+
+.create-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-bottom: 2px solid rgb(222, 222, 228);
+}
+
+.create-title {
+  font-size: 18px;
+  color: #50C1FD;
+  font-weight: bold;
+}
+
+.create-input {
+  width: 70%;
+}
+
+.create-button-area {
+  display: flex;
+  margin-top:15px;
+}
+
+.create-button-area button {
+  margin-left: 30px;
+  border-radius: 10px;
+  padding: 5px 25px;
+  font-weight: bold;
+  color: #50C1FD;
+  border-color: #50C1FD;
+  background-color: white;
+}
+
+.create-button-area button:hover {
+  background-color: #50C1FD;
+  color: white;
+  border-color: #50C1FD;
+}
+
+.create-title-area {
+  display: flex;
+  align-items: center;
+}
+
+.create-title-area svg {
+  color:#50C1FD;
+  margin-left: 20px;
+  font-size: 30px;
+  cursor:pointer;
+}
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-bottom: 2px solid rgb(222, 222, 228);
+}
+
+.edit-title {
+  font-size: 18px;
+  color: #50C1FD;
+  font-weight: bold;
+}
+
+.edit-input {
+  width: 70%;
+}
+
+.edit-button-area {
+  display: flex;
+  margin-top:15px;
+}
+
+.edit-button-area button {
+  margin-left: 30px;
+  border-radius: 10px;
+  padding: 5px 25px;
+  font-weight: bold;
+  color: #50C1FD;
+  border-color: #50C1FD;
+  background-color: white;
+}
+
+.edit-button-area button:hover {
+  background-color: #50C1FD;
+  color: white;
+  border-color: #50C1FD;
+}
+
+.edit-title-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.edit-title-area svg {
+  color:#50C1FD;
+  margin-right: 20px;
+  font-size: 30px;
+  cursor:pointer;
+}
