@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CheckIcon from '@mui/icons-material/Check';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
+import axios from 'axios';
 
 const Card = ({title, date, selectedCard, setSelectedCard, id, setEditMode}) => {
   const isThisCardSelected = selectedCard === id
@@ -17,7 +18,7 @@ const Card = ({title, date, selectedCard, setSelectedCard, id, setEditMode}) => 
   }
 
   const deleteCard = () => {
-    // api
+    axios.delete('https://welcometoatodolist.herokuapp.com/finish?id=6350c3729c7d0431dfab67fb')
   }
 
   const editCard = () => {

@@ -34,15 +34,21 @@ function App() {
   const [editMode, setEditMode] = useState(false);
 
   const createTask = () => {
-    // api
+    axios.post('https://welcometoatodolist.herokuapp.com/create', {
+      content: inputValue,
+    })
   }
   
   const editTask = () => {
-    // api
+    axios.put('https://welcometoatodolist.herokuapp.com/update?id=6350c3729c7d0431dfab67fb', {
+      content: editField
+    })
   }
 
   useEffect(() => {
-    // api
+    axios.get('https://welcometoatodolist.herokuapp.com/').then(function (response) {
+      console.log(response);
+    })
   }, [])
 
   return (
