@@ -9,6 +9,8 @@
   width: 500px;
   margin-top:40px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -128,4 +130,9 @@ h1 {
   margin-right: 20px;
   font-size: 30px;
   cursor:pointer;
+}
+
+.loading-gif {
+  width: 400px;
+  margin: auto;
 }

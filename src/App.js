@@ -2,29 +2,12 @@ import './App.css';
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import goSymbol from './assets/goSymbol.png'
+import loadingGif from './assets/loading.gif'
 import {Card} from './components/Card';
 import React, {useState, useEffect} from 'react'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from 'axios';
-
-const mockTasks = [
-  {
-    id: 0,
-    date: '2022-10-11',
-    text: 'I need to go to supermarket buy some eggs',
-  },
-  {
-    id: 1,
-    date: '2022-10-05',
-    text: 'Decide which color is my favorite',
-  },
-  {
-    id: 2,
-    date: '2022-10-07',
-    text: 'Finish goolang to do list',
-  },
-]
 
 function App() {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -32,22 +15,49 @@ function App() {
   const [inputValue,setInputValue] = useState('');
   const [editField,setEditField] = useState('');
   const [editMode, setEditMode] = useState(false);
+  const [tasks,setTasks] = useState([]);
+  const [loading,setLoading] = useState(false);
+
+  const apiURL = 'https://welcometoatodolist.herokuapp.com'
 
   const createTask = () => {
-    axios.post('https://welcometoatodolist.herokuapp.com/create', {
+    setLoading(true)
+    axios.post(`${apiURL}/create`, {
       content: inputValue,
+    }).then((response)=> {
+      setTasks((previousState) => [...previousState,response.data])
+      setLoading(false)
     })
+    setInputValue('');
   }
   
   const editTask = () => {
-    axios.put('https://welcometoatodolist.herokuapp.com/update?id=6350c3729c7d0431dfab67fb', {
+    setLoading(true)
+    axios.put(`${apiURL}/update?id=${selectedCard}`, {
       content: editField
+    }).then(() => {
+      const newTasks = tasks.map(task => {
+        if(task.id === selectedCard) {
+          return {
+            ...task,
+            content: editField,
+          }
+        }
+        return task
+      })
+      setTasks(newTasks)
+      setEditField('');
+      setSelectedCard(null);
+      setEditMode(false);
+      setLoading(false);
     })
   }
 
   useEffect(() => {
-    axios.get('https://welcometoatodolist.herokuapp.com/').then(function (response) {
-      console.log(response);
+    setLoading(true);
+    axios.get(apiURL).then(function (response) {
+      setTasks(response.data)
+      setLoading(false);
     })
   }, [])
 
@@ -62,6 +72,9 @@ function App() {
                 <img className='header_img' src={goSymbol} />
               </div>
             </header>
+            {loading 
+            ? <img className="loading-gif" src={loadingGif}/>
+          : <> 
             <section className='create-container'>
               <div className='create-title-area'>
                 <p className='create-title'>Criar nova task</p>
@@ -75,10 +88,20 @@ function App() {
               )}
             </section>
             <section>
-              {mockTasks.map((task) => (
-                <Card setEditMode={setEditMode} title={task.text} id={task.id} date={task.date} key={task.id} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
+              {tasks.filter((task) => task.finish === false).map((task) => (
+                <Card setEditField={setEditField}
+                setLoading={setLoading}
+                setTasks={setTasks}
+                setEditMode={setEditMode}
+                title={task.content}
+                id={task.id}
+                date={task.created_at}
+                key={task.id}
+                selectedCard={selectedCard}
+                setSelectedCard={setSelectedCard} />
               ))}
             </section>
+          </>}
           </>
         )}
         {editMode && (
